@@ -30,13 +30,11 @@ define 'ThreeUI', [], () ->
       mesh.randomPower = 1 + (100  * Math.random())
       mesh.receiveShadow = false
 
-      sound = _.shuffle(['one','two','three','four'])[0]
-      s = new buzz.sound("/sounds/#{sound}.ogg");
-      s.setVolume(30)
+      sound   = _.shuffle(['one','two','three','four'])[0]
+      s       = new buzz.sound("/sounds/#{sound}.ogg");
+      s.setVolume(8)
       playSounds = Session.get('playSounds')
-      log 'playSounds', playSounds
       s.play() if playSounds
-
 
       ['x', 'y', 'z'].forEach (axis) ->
         mesh.rotation[axis] = Math.random() * 360
@@ -45,9 +43,9 @@ define 'ThreeUI', [], () ->
 
       # animate the square in from a random point in space.
       tween = new TWEEN.Tween(
-          x: 4000 * Math.random()
-          y: 4000 * Math.random()
-          z: 4000 * Math.random()
+          x: _.shuffle([-4000..4000])[0]
+          y: _.shuffle([-4000..4000])[0]
+          z: _.shuffle([-4000..4000])[0]
           rotationX: mesh.rotation.x
         )
         .to({rotationX: 0, x: mesh.position.x, y: mesh.position.y, z: mesh.position.z}, 500)
@@ -84,7 +82,7 @@ define 'ThreeUI', [], () ->
 
     initCamera: ->
       @camera = new THREE.PerspectiveCamera 50, window.innerWidth / window.innerHeight, 1, 4000
-      @camera.position.set 456, 350, 400
+      @camera.position.set 456, 350, 1400
 
     initRenderer: ->
       @renderer = new THREE.WebGLRenderer antialias: true
