@@ -1,0 +1,7 @@
+[submodule "rack"]
+  path = packages/three-meteor
+  url = git@github.com:nozpheratu/three-meteor.git
+
+[submodule "buzz"]
+  path = packages/buzz.js
+  url = git@github.com:brentjanderson/meteor-buzz.git
