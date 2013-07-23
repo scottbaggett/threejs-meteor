@@ -1,3 +1,4 @@
+Session.set('playSounds', true)
 
 Meteor.startup ->
   require ['ThreeUI'], (ThreeUI) ->
@@ -14,12 +15,15 @@ Template.body.events
   'click #wrapper': ->
     App.ui.addRandomCube()
 
-playSounds = false
+
+
 Template.playSoundsButton.events
-  'click': ->
-    playSounds = if playSounds then false else true
-    Session.set 'playSounds', playSounds
-    log playSounds
+  'click button': ->
+    ps = Session.get('playSounds')
+    ps = if ps == false then true else false
+    Session.set 'playSounds', ps
+    # log playSounds
 
 
-Template.playSoundsButton.playSounds = -> Session.get 'playSounds'
+Handlebars.registerHelper 'playSounds', ->
+  Session.get 'playSounds'

@@ -33,7 +33,7 @@ define 'ThreeUI', [], () ->
       sound = _.shuffle(['one','two','three','four'])[0]
       s = new buzz.sound("/sounds/#{sound}.ogg");
       s.setVolume(30)
-      playSounds = Session.get('playSounds') is false
+      playSounds = Session.get('playSounds')
       log 'playSounds', playSounds
       s.play() if playSounds
 
