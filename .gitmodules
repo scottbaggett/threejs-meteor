@@ -5,3 +5,11 @@
 [submodule "buzz"]
   path = packages/buzz.js
   url = git@github.com:brentjanderson/meteor-buzz.git
+
+[submodule "define"]
+  path = packages/define
+  url = git@github.com:apendua/require.git
+
+[submodule "log"]
+  path = packages/meteor-log
+  url = git@github.com:scottbaggett/meteor-log.git
