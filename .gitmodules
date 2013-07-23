@@ -13,3 +13,7 @@
 [submodule "log"]
   path = packages/meteor-log
   url = git@github.com:scottbaggett/meteor-log.git
+
+[submodule "three-meteor"]
+  path = packages/three-meteor
+  url = git@github.com:nozpheratu/three-meteor.git
