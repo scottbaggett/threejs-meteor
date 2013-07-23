@@ -1,0 +1,28 @@
+<head>
+  <script src="scripts/threejs/controls/OrbitControls.js"></script>
+  <script src="scripts/stats.js"></script>
+  <title>Meteor + ThreeJS</title>
+
+</head>
+
+<body>{{> body}}</body>
+
+<template name="body">
+  <div id='wrapper'>
+    <div id="container"></div>
+  </div>
+  {{>playSoundsButton}}
+</template>
+
+
+<template name="playSoundsButton">
+  <div id="playSounds">
+    {{#if playSounds}}
+      <button class='soundToggle '>Mute Sounds</button>
+    {{else}}
+      <button class='soundToggle muted'>Unmute Sounds</button>
+
+    {{/if}}
+  </div>
+</template>
+
