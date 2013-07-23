@@ -19,13 +19,14 @@ define 'ThreeUI', [], () ->
       @addLights()
 
     addRandomCube: =>
+      rndColor = _.shuffle([0xFF0000, 0x00FF00, 0x0000FF])[0]
       rnd = 20 + Math.random() * 40
-      mat = new THREE.MeshPhongMaterial color: 0xfcef00
+      mat = new THREE.MeshPhongMaterial color: rndColor
       geom = new THREE.CubeGeometry rnd, rnd, rnd
       mesh = new THREE.Mesh geom, mat
-      mesh.position.x = ( Math.random() - 0.15 ) * 500
-      mesh.position.y = ( Math.random() - 0.15 ) * 500
-      mesh.position.z = ( Math.random() - 0.15 ) * 500
+      mesh.position.x = _.shuffle([-400..400])[0]
+      mesh.position.y = _.shuffle([-400..400])[0]
+      mesh.position.z = _.shuffle([-400..400])[0]
       mesh.castShadow = true
       mesh.randomPower = 1 + (100  * Math.random())
       mesh.receiveShadow = false
@@ -48,7 +49,7 @@ define 'ThreeUI', [], () ->
           z: _.shuffle([-4000..4000])[0]
           rotationX: mesh.rotation.x
         )
-        .to({rotationX: 0, x: mesh.position.x, y: mesh.position.y, z: mesh.position.z}, 500)
+        .to({rotationX: 0, x: mesh.position.x, y: mesh.position.y, z: mesh.position.z}, _.shuffle([500,1800])[0])
         .easing(TWEEN.Easing.Exponential.Out)
         .onUpdate ->
           mesh.rotation.x = this.rotationX
@@ -58,12 +59,20 @@ define 'ThreeUI', [], () ->
       tween.start()
 
     addLights: =>
-      light = new THREE.DirectionalLight( 0xffffff )
-      light.position.set( 12, 5, 1 )
-      light.castShadow = true
-      light.shadowDarkness = 0.5
-      light.shadowCameraNear = 0.01
-      @scene.add light
+      ambient = new THREE.AmbientLight 0x252525
+      @addToScene ambient
+      light1 = new THREE.DirectionalLight( 0xffffff )
+      light1 = new THREE.DirectionalLight( 0xffffff )
+      light1.position.set( 2, 20, 400 )
+
+      @addToScene light1
+
+      light2 = new THREE.DirectionalLight( 0xffffff )
+      light2.position.set( -1200, -35, -1200 )
+
+      @addToScene light2
+
+
 
     initContainer: ->
       @container  = document.getElementById( 'container' )
@@ -82,7 +91,7 @@ define 'ThreeUI', [], () ->
 
     initCamera: ->
       @camera = new THREE.PerspectiveCamera 50, window.innerWidth / window.innerHeight, 1, 4000
-      @camera.position.set 456, 350, 1400
+      @camera.position.set -1000, -300, -1400
 
     initRenderer: ->
       @renderer = new THREE.WebGLRenderer antialias: true
