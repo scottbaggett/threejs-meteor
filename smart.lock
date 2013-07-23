@@ -1,0 +1,27 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "define": {},
+      "tween": {},
+      "buzz.js": {}
+    },
+    "packages": {
+      "define": {
+        "git": "https://github.com/apendua/require.git",
+        "tag": "v0.9.0.1",
+        "commit": "7594e5f0c0678ff47367f1bcd6b20d0ca4b7965c"
+      },
+      "tween": {
+        "git": "https://github.com/vedosity/meteor-tween.git",
+        "tag": "v0.10.0",
+        "commit": "a6e30c0fb7f22839eeb1dff0951ba51e873d0612"
+      },
+      "buzz.js": {
+        "git": "https://github.com/brentjanderson/meteor-buzz.git",
+        "tag": "v1.0.6",
+        "commit": "5ba1f2db74c55991cabd202bd95edc1d926dae66"
+      }
+    }
+  }
+}
